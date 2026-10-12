@@ -21,7 +21,7 @@
 
 One line per day: done / next / blockers.
 
-- Mon —
+- Mon — FLAG-8: workspace, Turbo and tooling config done; next: shared package, API, web. No blockers.
 - Tue —
 - Wed —
 - Thu —

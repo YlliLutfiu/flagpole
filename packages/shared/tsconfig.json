@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    // ESM-only package: type-only imports must use `import type`, so nothing is emitted for them.
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src"]
+}
