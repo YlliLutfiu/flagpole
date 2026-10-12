@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# Caches
+.turbo/
+.cache/
+.eslintcache
+
+# Test output
+coverage/
+playwright-report/
+test-results/
+
+# Environment variables and secrets (keep the example file)
+.env
+.env.*
+!.env.example
+*.pem
+
+# Local database data (if Docker volumes are bind-mounted into the repo)
+.docker-data/
+pgdata/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editors and OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# AI assistant files (kept local, not pushed)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+# Vercel
+.vercel/
+
+# Scratch
+tmp/
