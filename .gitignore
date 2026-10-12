@@ -46,7 +46,6 @@ Thumbs.db
 desktop.ini
 
 # AI assistant files (kept local, not pushed)
-CLAUDE.md
 CLAUDE.local.md
 .claude/
 
