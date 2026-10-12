@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+
+# One version for tools used by several packages. Packages reference these as "catalog:".
+catalog:
+  # typescript-eslint 8 supports TypeScript <6.1, so stay on 6.0.x until it supports 7.
+  typescript: ~6.0.3
+  eslint: ^10.12.0
