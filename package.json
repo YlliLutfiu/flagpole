@@ -11,6 +11,7 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "test:integration": "turbo run test:integration",
     "format": "prettier --ignore-path .gitignore --ignore-path .prettierignore --ignore-path .git/info/exclude --write .",
     "format:check": "prettier --ignore-path .gitignore --ignore-path .prettierignore --ignore-path .git/info/exclude --check ."
   },

@@ -68,7 +68,8 @@ Run these from the repository root.
 | `pnpm build`                        | Build every package (cached by Turborepo)                                                      |
 | `pnpm typecheck`                    | Type-check every package                                                                       |
 | `pnpm lint`                         | Lint every package                                                                             |
-| `pnpm test`                         | Run every package's tests                                                                      |
+| `pnpm test`                         | Run every package's tests (no database needed)                                                 |
+| `pnpm test:integration`             | Run the API's tests against a real database (start PostgreSQL first)                           |
 | `pnpm format` / `pnpm format:check` | Format with Prettier, or only check formatting                                                 |
 | `docker compose up -d --wait`       | Start PostgreSQL and wait until it is healthy                                                  |
 | `docker compose down`               | Stop and remove the PostgreSQL container (keeps the data volume)                               |

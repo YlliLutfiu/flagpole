@@ -8,6 +8,9 @@
     "test": {
       "env": ["DATABASE_URL"],
       "inputs": ["$TURBO_DEFAULT$", ".env"]
+    },
+    "test:integration": {
+      "env": ["DATABASE_URL"]
     }
   }
 }
