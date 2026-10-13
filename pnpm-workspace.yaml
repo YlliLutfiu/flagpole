@@ -7,5 +7,22 @@ catalog:
   # typescript-eslint 8 supports TypeScript <6.1, so stay on 6.0.x until it supports 7.
   typescript: ~6.0.3
   eslint: ^10.12.0
+  '@types/node': ^24.19.2
   vite: ^8.3.4
   vitest: ^5.0.3
+
+# Dependency install scripts are blocked unless listed here.
+allowBuilds:
+  # Pulled in by eslint-config-next. Its postinstall only downloads a native binary when the
+  # platform package (@unrs/resolver-binding-*) is missing; that package installs as an optional dependency.
+  unrs-resolver: false
+
+peerDependencyRules:
+  # These eslint-config-next plugins declare ESLint <=9 as a peer, but we run ESLint 10.
+  # Verified 2026-10-13: their rules load and report under ESLint 10.12 (eslint-plugin-import 2.32.0,
+  # eslint-plugin-jsx-a11y 6.10.2, eslint-plugin-react 7.37.5).
+  # Remove these entries once the plugins declare ESLint 10 support.
+  allowedVersions:
+    eslint-plugin-import>eslint: ^10.0.0
+    eslint-plugin-jsx-a11y>eslint: ^10.0.0
+    eslint-plugin-react>eslint: ^10.0.0
