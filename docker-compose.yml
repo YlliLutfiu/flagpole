@@ -1,0 +1,28 @@
+# Local development database. Start with `docker compose up -d --wait`.
+name: flagpole
+
+services:
+  postgres:
+    # Pinned major version; patch releases arrive with `docker compose pull`.
+    image: postgres:18
+    environment:
+      # Local-only credentials. DATABASE_URL in apps/api/.env must match them.
+      POSTGRES_USER: flagpole
+      POSTGRES_PASSWORD: flagpole
+      POSTGRES_DB: flagpole
+    ports:
+      # Host port defaults to 5433 so it doesn't clash with a local PostgreSQL on 5432.
+      # Bound to 127.0.0.1 so the database isn't reachable from the rest of the network.
+      - '127.0.0.1:${POSTGRES_HOST_PORT:-5433}:5432'
+    volumes:
+      # Postgres 18 images keep data in /var/lib/postgresql/18/docker and declare the volume one level up.
+      - postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'flagpole', '-d', 'flagpole']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  postgres-data:

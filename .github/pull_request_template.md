@@ -18,6 +18,5 @@ FLAG-
 - [ ] Acceptance criteria from the Jira issue are met
 - [ ] Tests added/updated and passing locally
 - [ ] CI is green
-- [ ] I can explain every line in this diff
 - [ ] Docs updated (README / CLAUDE.md commands / ADR) if needed
 - [ ] No secrets, debug logs, or commented-out code
