@@ -55,7 +55,7 @@ This is how Flagpole is built. I work solo, but I follow a lightweight Scrum pro
 - [ ] All acceptance criteria are met.
 - [ ] Automated tests cover the new behavior, and CI is green.
 - [ ] The PR is self-reviewed with the PR template checklist.
-- [ ] Docs are updated: README, CLAUDE.md commands, or an ADR if a decision was made.
+- [ ] Docs are updated: README commands, or an ADR if a decision was made.
 - [ ] No secrets, debug logs or commented-out code are left behind.
 - [ ] The PR is merged to `main` with a rebase merge, and the Jira issue is moved to Done.
 
@@ -77,20 +77,3 @@ This is how Flagpole is built. I work solo, but I follow a lightweight Scrum pro
 **ADRs**
 - Stored as `docs/adr/ADR-XXX-title.md` using the template.
 - Write one for any decision someone might question in 6 months.
-
-## How I use AI
-
-I use Claude Code as a pair programmer for:
-
-- scaffolding;
-- boilerplate;
-- reviewing my code;
-- suggesting test cases;
-- explaining unfamiliar APIs.
-
-These rules keep the work mine:
-
-- I make the design decisions and write the ADRs myself.
-- I write the core evaluation engine (`packages/shared/src/evaluation`) by hand.
-- I review every diff before committing, and I commit myself.
-- If I cannot explain a piece of code, it does not get merged.
