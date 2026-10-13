@@ -22,7 +22,7 @@
 One line per day: done / next / blockers.
 
 - Mon — FLAG-8: workspace, Turbo and tooling config done; next: shared package, API, web. No blockers.
-- Tue —
+- Tue — FLAG-8 done: workspace, ESM API (NestJS 12), Next.js 16 app, ADR-001. Next: FLAG-9 Docker Postgres.
 - Wed —
 - Thu —
 - Fri —
