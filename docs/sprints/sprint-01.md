@@ -22,7 +22,7 @@
 One line per day: done / next / blockers.
 
 - Mon — FLAG-8: workspace, Turbo and tooling config done; next: shared package, API, web. No blockers.
-- Tue — FLAG-8 done: workspace, ESM API (NestJS 12), Next.js 16 app, ADR-001. Next: FLAG-9 Docker Postgres.
+- Tue — FLAG-8 done: workspace, ESM API (NestJS 12), Next.js 16 app, ADR-001. FLAG-9 done: Postgres 18 via Compose (port 5433), pg pool, /health/ready with 503 on DB down. Next: FLAG-10 CI.
 - Wed —
 - Thu —
 - Fri —

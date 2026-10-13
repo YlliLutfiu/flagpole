@@ -92,7 +92,17 @@ Time-boxed to 2 hours. Model the same two tables (flags + flag_environment_confi
 
 > As a developer working on Flagpole, I want a versioned database schema and seed data so that every environment starts from the same known state.
 
-Tables as described in CLAUDE.md (users, sessions, projects, environments, flags, flag_environment_configs, api_keys).
+Data model (snake_case in the database, camelCase in TypeScript):
+
+| Table | Columns |
+|---|---|
+| `users` | id (uuid), email (unique, lowercased), password_hash (argon2id), name, created_at |
+| `sessions` | id, user_id, token_hash, expires_at, created_at |
+| `projects` | id, owner_id → users, key, name, created_at |
+| `environments` | id, project_id, key, name, sort_order, ruleset_version (bigint, bumped on every config change; used as SDK ETag) |
+| `flags` | id, project_id, key (immutable), name, description, type (`boolean`\|`string`\|`number`\|`json`), variations (jsonb array), salt, archived_at, created_by, created_at, updated_at |
+| `flag_environment_configs` | (flag_id, environment_id) PK, enabled, off_variation, rules (jsonb), fallthrough (jsonb), version (int, optimistic locking), updated_by, updated_at |
+| `api_keys` | id, environment_id, type (`server`\|`client`), name, key_prefix, key_hash (sha256, unique), last_used_at, revoked_at, created_at |
 
 **Acceptance criteria**
 
@@ -143,7 +153,7 @@ Endpoints under /api/v1/projects/:projectId/flags.
 
 > As an application using Flagpole, I want flags evaluated against a user context so that different users can receive different variations.
 
-Lives in packages/shared/src/evaluation. I write the implementation myself; Claude Code only reviews and suggests test cases.
+Lives in packages/shared/src/evaluation. Implemented by hand; AI tooling is used only for review and test-case suggestions.
 
 **Acceptance criteria**
 

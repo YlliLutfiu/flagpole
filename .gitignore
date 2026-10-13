@@ -45,10 +45,6 @@ pnpm-debug.log*
 Thumbs.db
 desktop.ini
 
-# AI assistant files (kept local, not pushed)
-CLAUDE.local.md
-.claude/
-
 # Vercel
 .vercel/
 

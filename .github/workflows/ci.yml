@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# The GITHUB_TOKEN only needs to read the repository.
+permissions:
+  contents: read
+
+# A new push to a pull request cancels its previous run; runs on main always finish.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
+jobs:
+  # Branch protection requires this job by name: "verify".
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    services:
+      postgres:
+        # Keep in sync with docker-compose.yml.
+        image: postgres:18
+        env:
+          POSTGRES_USER: flagpole
+          POSTGRES_PASSWORD: flagpole
+          POSTGRES_DB: flagpole
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U flagpole -d flagpole"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      # Actions are pinned to full commit SHAs; the comment shows the release they belong to.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+
+      # No version input: pnpm comes from "packageManager" in package.json.
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm format:check
+
+      - run: pnpm exec turbo run lint typecheck test build
+
+      - run: pnpm test:integration
+        env:
+          DATABASE_URL: postgres://flagpole:flagpole@127.0.0.1:5432/flagpole
