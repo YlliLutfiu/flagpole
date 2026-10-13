@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    // An app, not a library: nothing imports its type declarations.
+    "declaration": false,
+    "declarationMap": false,
+    // Nest's dependency injection reads constructor parameter types from decorator metadata.
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["node"]
+  },
+  "include": ["src", "test", "vitest.config.ts"]
+}
