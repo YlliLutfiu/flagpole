@@ -24,21 +24,23 @@ One line per day: done / next / blockers.
 - Mon — FLAG-8: workspace, Turbo and tooling config done; next: shared package, API, web. No blockers.
 - Tue — FLAG-8 done: workspace, ESM API (NestJS 12), Next.js 16 app, ADR-001. FLAG-9 done: Postgres 18 via Compose (port 5433), pg pool, /health/ready with 503 on DB down. FLAG-10 done: GitHub Actions CI with Postgres service container, real-database integration test, SHA-pinned actions, main protected by ruleset; repo made public.
 - Wed — Next: FLAG-11 ORM spike. No blockers.
-- Thu —
-- Fri —
-- Sat —
-- Sun —
+- Thu — No work (unavailable).
+- Fri — No work (unavailable).
+- Sat — No work (unavailable).
+- Sun — No work (unavailable).
 
 ## Sprint review
 
-**Goal met?** Yes / Partially / No — <why>
+**Goal met?** No. The foundation shipped (monorepo, database, CI), but the API and evaluator weren't started, after five days without availability.
 
 **Shipped:**
--
+- FLAG-8: pnpm + Turborepo monorepo, NestJS 12 ESM API, Next.js 16 dashboard, shared package, ADR-001
+- FLAG-9: Postgres 18 via Docker Compose, pg pool, liveness/readiness endpoints
+- FLAG-10: GitHub Actions CI with a Postgres service container and a real-database integration test; main protected
 
 **Demo:** <link to GIF / screenshot / video>
 
-**Metrics:** committed <x> pts · completed <y> pts · carried over <z> pts
+**Metrics:** committed 20 pts · completed 5 pts · carried over 15 pts
 
 ## Retrospective
 
@@ -48,10 +50,11 @@ One line per day: done / next / blockers.
 
 **Problem** (what slowed me down):
 - Infra stories had hidden config work (FLAG-9 was closer to 2 points than 1).
-- Environment issues outside the code: Docker Desktop not running, PAT missing the `workflow` scope, repo accidentally private.
+- Environment issues outside the code: Docker Desktop, PAT scopes, repo visibility.
+- Five days without availability, and no plan for low-energy days.
 
 **Try** (one concrete change for next sprint):
--
+- Plan capacity from real availability, and keep a 30-minute minimum on busy days (one small task or doc update) so the work never fully stops.
 
 ## Carry-over to next sprint
--
+- FLAG-11, FLAG-12, FLAG-13, FLAG-14, FLAG-15
